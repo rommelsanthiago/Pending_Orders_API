@@ -27,7 +27,7 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "Teste de funcionamento",
+            "description": "Teste de funcionamento APIRest",
             "schema": {
               "$ref": "#/definitions/Test"
             }
