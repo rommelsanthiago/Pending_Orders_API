@@ -10,4 +10,15 @@ const ordersDatabase = new OrdersDatabase();
 const ordersBusiness = new OrdersBusiness(ordersDatabase);
 const ordersController = new OrdersController(ordersBusiness);
 
-ordersRouter.get('/balance', (req, res) => ordersController.getBalanceOrders(req, res));
+ordersRouter.get('/balance', (req, res) => {
+    // #swagger.tags = ['Balance orders']
+    // #swagger.description = '<b>Endpoint para retornar o balanço dos pedidos pendentes, não necessita passar parâmetros</b>'
+
+    /* 
+        #swagger.responses[200] = {
+            schema: { $ref: "#/definitions/Pedido" },
+            description: 'Pedidos pendentes'
+        } 
+    */
+    ordersController.getBalanceOrders(req, res)
+});

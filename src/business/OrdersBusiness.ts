@@ -1,7 +1,7 @@
 import fs from "fs";
 
 import { pendingItems } from "../models/pendingItems";
-import { reportObj } from "../models/report";
+import { reportObj } from "../models/reportObj";
 
 import { getOrdersPending } from "../utils/getOrdersPending";
 import { readOrders } from "../utils/readOrders";
@@ -33,7 +33,6 @@ export class OrdersBusiness {
             });
         };
 
-        
         const finalReport: {}[] = [];
 
         for (const key in ordersPending) {
@@ -70,6 +69,6 @@ export class OrdersBusiness {
 
         const fileName = 'pedidos-pendentes.txt'
         fs.writeFileSync(fileName, ordersToStringFormat);
-        return `File ${fileName} created!, "Balance": ${ordersToStringFormat}`;
+        return {message: `File ${fileName} created!`, data: finalReport};
     }
 }
