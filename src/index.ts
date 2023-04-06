@@ -1,20 +1,8 @@
-import express from "express";
-import cors from "cors";
-import { AddressInfo } from "net";
-import { router } from './Router/routes';
+import { app } from "./controllers/app";
+import { ordersRouter } from "./controllers/routes/OrdersRoutes";
 
-const app = express();
+app.get('/', (req, res) => {
+   return res.status(200).send("Api de pedidos pendentes");
+});
 
-app.use(express.json());
-app.use(cors());
-
-app.use('/', router);
-
-const server = app.listen(process.env.PORT || 3003, () => {
-   if (server) {
-      const addr = server.address() as AddressInfo;
-      console.log(`Server is running in ${addr.address}:${addr.port}`);
-   } else {
-      console.error(`Failure upon starting server.`);
-   };
-});  
+app.use('/orders/', ordersRouter);
